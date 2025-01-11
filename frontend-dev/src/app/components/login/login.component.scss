@@ -1,0 +1,30 @@
+.login-card {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.extras {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.forgot-pass-link,
+.register-link,
+.home-link {
+  font-size: 12px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.forgot-pass-link:hover,
+.register-link:hover,
+.home-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
