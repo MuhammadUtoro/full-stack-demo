@@ -5,42 +5,33 @@
   <span>Swim App</span>
   <span class="spacer"></span>
 
-  <a mat-icon-button routerLink="/login">
+  <a mat-button routerLink="/login">
     <mat-icon>login</mat-icon>
+    <span>Login</span>
   </a>
-  <span>Login</span>
 
-  <a mat-icon-button routerLink="/register">
+  <a mat-button routerLink="/register">
     <mat-icon>how_to_register</mat-icon>
+    <span>Register</span>
   </a>
-  <span>Register</span>
 </mat-toolbar>
 
-<mat-card appearance="raised">
-  <mat-card-title class="home-card-1">
-    <mat-card-content class="home-content">
-      <h2>This will be content on the homepage</h2>
-    </mat-card-content>
-    <mat-card-content class="image">
-      <img
-        mat-card-lg-image
-        src="https://en.reformsports.com/oxegrebi/2023/10/what-is-an-olymp-swimming-pool.jpg"
-        alt=""
-      />
-    </mat-card-content>
-  </mat-card-title>
-
-  <mat-card-title>
-    <mat-card-content>
-      <p>Kenapa susah sekali menggunakan matcard?</p>
-    </mat-card-content>
-  </mat-card-title>
-
-  <mat-card-title>
-    <mat-card-content>
-      <h3>
-        Semua content harusnya terlihat seperti Grid! Kenapa ini tidak!!??
-      </h3>
-    </mat-card-content>
-  </mat-card-title>
-</mat-card>
+<div class="grid-container">
+  <h1 class="home-title">This is home</h1>
+  <mat-grid-list cols="2" rowHeight="250">
+    @for (card of cards | async; track card) {
+    <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="home-grid">
+        <mat-card-header>
+          <mat-card-title>
+            {{ card.title }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <h3>This should be the content</h3>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    }
+  </mat-grid-list>
+</div>

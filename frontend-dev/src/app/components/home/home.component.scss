@@ -1,3 +1,23 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.grid-container {
+  margin: 20px;
+}
+
+.home-title {
+  text-align: center;
+}
+
+.home-grid {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.card-content {
+  text-align: center;
+}
