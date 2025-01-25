@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  backend:
+    image: backend-app
+    container_name: backend-container
+    build:
+      context: ./backend-dev
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8081:8081"
+    environment:
+      - QUARKUS_PROFILE=prod
+    depends_on:
+      - mongodb
+
+  frontend:
+    image: frontend-app
+    container_name: frontend-container
+    build:
+      context: ./frontend-dev
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"

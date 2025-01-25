@@ -14,7 +14,7 @@ export interface UserRegistrationDTO {
   providedIn: 'root',
 })
 export class RegistrationService {
-  registerUrl = 'http://localhost:8080/register'; // This must our backend enpoint in Quarkus
+  registerUrl = 'http://localhost:8081/register'; // This must our backend enpoint in Quarkus
 
   // Constructor for HttpClient
   constructor(private httpClient: HttpClient) {}

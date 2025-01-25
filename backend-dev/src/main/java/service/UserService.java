@@ -13,11 +13,11 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class UserService {
-    public List<RegistrationDTO> getAllUsers() {
-        return User.listAll().stream()
-        .map(entity -> (User) entity)
-        .map(this::toDTO)
-        .collect(Collectors.toList());
+    public List<UserDTO> getAllUsers() {
+        return User.<User>listAll()
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 
     public UserDTO userRegistration(RegistrationDTO registrationDTO) {
@@ -26,7 +26,7 @@ public class UserService {
 
         // Create User Entity from registrationDTO
         User user = new User(registrationDTO, hashedPassword);
-        user.setRole(User.Role.TRAINER);
+        user.setRole(User.Role.ADMIN);
 
         // Persist to Database
         user.persist();
@@ -55,7 +55,7 @@ public class UserService {
     }
 
     // Helper method to convert Entity to DTO
-    private RegistrationDTO toDTO(User user) {
-        return new RegistrationDTO(user);
+    private UserDTO toDTO(User user) {
+        return new UserDTO(user);
     }
 }

@@ -44,7 +44,7 @@ public class LoginResource {
         // If success we generate token
         User.Role userRole = user.getRole();
         String token = TokenGenerator.generateToken(
-            "http://localhost:8080/swim-app",
+            "http://localhost:8081/swim-app",
             user.getUserEmail(),
             userRole
         );

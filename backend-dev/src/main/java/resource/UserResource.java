@@ -2,7 +2,7 @@ package resource;
 
 import java.util.List;
 
-import dto.RegistrationDTO;
+import dto.UserDTO;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -25,8 +25,8 @@ public class UserResource {
     @GET
     @RolesAllowed("ADMIN")
     public Response getAllUsers() {
-        List<RegistrationDTO> registrationDTO = userService.getAllUsers();
+        List<UserDTO> userDTOs = userService.getAllUsers();
 
-        return Response.status(Response.Status.OK).entity(registrationDTO).build();
+        return Response.status(Response.Status.OK).entity(userDTOs).build();
     } 
 }

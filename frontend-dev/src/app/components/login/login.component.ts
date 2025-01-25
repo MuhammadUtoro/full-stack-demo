@@ -55,15 +55,22 @@ export class LoginComponent {
     const userLoginDTO: UserLoginDTO = this.loginForm.value;
 
     this.loginService.userLogin(userLoginDTO).subscribe({
-      next: (user) => {
-        if (user) {
+      next: (response) => {
+        if (response && response.token) {
+          this.loginService.storeToken(response.token);
+
           this.snackBar.open('Login Success!', 'Close', {
             duration: 1200,
           });
+
+          // Redirect to users page
           this.router.navigate(['/users']);
+        } else {
+          this.snackBar.open('Login Failed!', 'Close', {
+            duration: 1200,
+          });
         }
       },
-
       error: (err) => {
         this.snackBar.open('Login failed!', 'Close', {
           duration: 1200,
